@@ -1,0 +1,21 @@
+{% extends 'fusen/base.html' %}
+
+{% block content %}
+<div>
+  <a href="{% url 'fusen:detail' fusen.id %}">戻る</a>
+  </div>
+  
+  <form action="{% url 'fusen:edit_fusen' fusen.id %}" method="POST">{% csrf_token %}
+    <table>
+      <tr>
+        <th>タイトル</th>
+        <td>{{ form.title }}</td>
+      </tr>
+      <tr>
+        <th>テキスト</th>
+        <td>{{ form.text }}</td>
+      </tr>
+    </table>
+    <button class="btn" type="submit">保存</button>
+  </form>
+  {% endblock %}

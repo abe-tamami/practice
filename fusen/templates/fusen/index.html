@@ -1,0 +1,16 @@
+{% extends 'fusen/base.html' %}
+
+{% block content %}
+
+<a class="btn" href="{% url 'fusen:new_fusen' %}">新規メモ作成</a>
+
+{% for fusen in fusens %}
+<a href="{% url 'fusen:detail' fusen.id %}" class="fusen-title">
+  <div>
+    {{ fusen }}
+    <span class="updated_datetime">{{ fusen.updated_datetime }}</span>
+  </div>
+</a>
+{% endfor %}
+
+{% endblock %}

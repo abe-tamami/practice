@@ -1,0 +1,18 @@
+{% extends 'fusen/base.html' %}
+
+{% block content %}
+<div>
+  <a href="{% url 'fusen:index' %}">ホームに戻る</a>
+</div>
+
+<h2>{{ fusen.title }}</h2>
+
+<div>
+  {{ fusen.text | linebreaks | urlize }}
+</div>
+<button><a class="btn" href="{% url 'fusen:edit_fusen' fusen.pk %}">編集</a></button
+  >
+<form method="post" action="{% url 'fusen:delete_fusen' fusen.pk %}">{% csrf_token %}
+  <button class="btn" type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
+</form>
+{% endblock %}
